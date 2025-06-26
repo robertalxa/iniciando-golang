@@ -3,8 +3,11 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Println("Olá mundo")
-	fmt.Println("Este é meu primeiro programa em GO")
+	var nome string = "Douglas"
+	var versao float32 = 1.1
+	var idade int = 24
+	fmt.Println("Olá, sr.", nome, "! Sua idade é", idade)
+	fmt.Println("Este programa está na versão", versao)
 }
 
 // Para buildar o executável é só rodar go build *nome do arquivo.go*
