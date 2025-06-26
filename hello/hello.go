@@ -1,13 +1,20 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func main() {
-	var nome string = "Douglas"
-	var versao float32 = 1.1
-	var idade int = 24
+	var nome = "Douglas"
+	var versao float32 = 1.1 // Sempre declarar o tipo dos floats pois existem dois
+	var idade = 24
 	fmt.Println("Olá, sr.", nome, "! Sua idade é", idade)
 	fmt.Println("Este programa está na versão", versao)
+
+	fmt.Println("O tipo da variável nome é ", reflect.TypeOf(nome))
+	fmt.Println("O tipo da variável idade é ", reflect.TypeOf(idade))
+	fmt.Println("O tipo da variável versão é ", reflect.TypeOf(versao))
 }
 
 // Para buildar o executável é só rodar go build *nome do arquivo.go*
