@@ -9,21 +9,23 @@ import (
 func main() {
 	// _, idade := devolveNomeEIdade() Esse underline faz o go ignorar o primeiro retorno
 	// fmt.Println("tenho ", idade, " anos")
-	exibeIntroducao()
-	exibeMenu()
-	comando := leComando()
 
-	switch comando {
-	case 1:
-		iniciarMonitoramento()
-	case 2:
-		fmt.Println("Exibindo logs")
-	case 0:
-		fmt.Println("Saindo do programa")
-		os.Exit(0)
-	default:
-		fmt.Println("Não conheço este comando")
-		os.Exit(-1)
+	exibeIntroducao()
+	for {
+		exibeMenu()
+		comando := leComando()
+
+		switch comando {
+		case 1:
+			iniciarMonitoramento()
+		case 2:
+			fmt.Println("Exibindo logs")
+		case 0:
+			fmt.Println("Saindo do programa")
+			os.Exit(0)
+		default:
+			fmt.Println("Não conheço este comando")
+		}
 	}
 }
 
@@ -46,10 +48,16 @@ func leComando() int {
 
 func iniciarMonitoramento() {
 	fmt.Println("Monitorando")
-	site := "https://www.alura.com.br"
+	// site := "https://httpbin.org/status/200" // Para requisição com sucesso
+	site := "https://httpbin.org/status/404" // Para requisição sem sucesso
 	response, _ := http.Get(site)
-	fmt.Println("Retorno da requisição: ", response)
 
+	switch response.StatusCode {
+	case 200:
+		fmt.Println("Site: ", site, " foi carregado com sucesso")
+	default:
+		fmt.Println("Site: ", site, " está com problema, status code: ", response.StatusCode)
+	}
 }
 
 func devolveNomeEIdade() (string, int) {
