@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 func main() {
@@ -18,18 +19,20 @@ func main() {
 	// fmt.Println("O tipo da variável versão é ", reflect.TypeOf(versao))
 
 	// Iniciando de fato o programa
-	nome := "Robert"
-	fmt.Println("Olá, sr.", nome, "!")
+	// nome := "Robert"
+	// fmt.Println("Olá, sr.", nome, "!")
 
-	fmt.Println("1 - Iniciar Monitoramento")
-	fmt.Println("2 - Exibir logs")
-	fmt.Println("0 - Sair do programa")
+	exibeIntroducao()
+	exibeMenu()
+	// fmt.Println("1 - Iniciar Monitoramento")
+	// fmt.Println("2 - Exibir logs")
+	// fmt.Println("0 - Sair do programa")
 
-	var comando int
+	// var comando int
 	// fmt.Scanf("%d", &comando)
-	fmt.Scan(&comando) // Aqui eu não preciso passar o modificador da variável
+	// fmt.Scan(&comando) // Aqui eu não preciso passar o modificador da variável
 
-	fmt.Println("O comando escolhido foi:", comando)
+	// fmt.Println("O comando escolhido foi:", comando)
 
 	// if comando == 1 { // Tem que ser sempre uma condição que retorna um true ou false
 	// 	fmt.Println("Monitorando")
@@ -41,6 +44,8 @@ func main() {
 	// 	fmt.Println("Não conheço este comando")
 	// }
 
+	comando := leComando()
+
 	switch comando {
 	case 1:
 		fmt.Println("Monitorando")
@@ -48,9 +53,28 @@ func main() {
 		fmt.Println("Exibindo logs")
 	case 0:
 		fmt.Println("Saindo do programa")
+		os.Exit(0)
 	default:
 		fmt.Println("Não conheço este comando")
+		os.Exit(-1)
 	}
+}
+
+func exibeMenu() {
+	fmt.Println("1 - Iniciar Monitoramento")
+	fmt.Println("2 - Exibir logs")
+	fmt.Println("0 - Sair do programa")
+}
+
+func exibeIntroducao() {
+	nome := "Robert"
+	fmt.Println("Olá, sr.", nome, "!")
+}
+
+func leComando() int {
+	var comandoLido int
+	fmt.Scan(&comandoLido) // Aqui eu não preciso passar o modificador da variável
+	return comandoLido
 }
 
 // Para buildar o executável é só rodar go build *nome do arquivo.go*
