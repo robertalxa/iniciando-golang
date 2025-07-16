@@ -4,7 +4,11 @@ import (
 	"fmt"
 	"net/http"
 	"os"
+	"time"
 )
+
+const MONITORAMENTOS = 3
+const INTERVALO_MONITORAMENTO = 5 * time.Second
 
 func main() {
 	// _, idade := devolveNomeEIdade() Esse underline faz o go ignorar o primeiro retorno
@@ -53,8 +57,12 @@ func iniciarMonitoramento() {
 	// site := "https://httpbin.org/status/404" // Para requisição sem sucesso
 	sites := []string{"https://httpbin.org/status/200", "https://httpbin.org/status/404", "https://www.alura.com.br", "https://www.caelum.com.br"}
 
-	for _, site := range sites {
-		testaSite(site)
+	for i := 0; i < MONITORAMENTOS; i++ {
+		for _, site := range sites {
+			testaSite(site)
+		}
+		fmt.Println("")
+		time.Sleep(INTERVALO_MONITORAMENTO)
 	}
 }
 
@@ -68,7 +76,7 @@ func testaSite(site string) {
 	default:
 		fmt.Println("Site: ", site, " está com problema, status code: ", response.StatusCode)
 	}
-	fmt.Println("")
+	// fmt.Println("")
 }
 
 func devolveNomeEIdade() (string, int) {
