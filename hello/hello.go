@@ -77,6 +77,7 @@ func devolveNomeEIdade() (string, int) {
 func exibeNomes() {
 	nomes := []string{"Robert", "Alexandre", "Almeida"}
 	fmt.Println(nomes)
+	fmt.Println("O meu slice tem", len(nomes))
 }
 
 // Para buildar o executável é só rodar go build *nome do arquivo.go*
