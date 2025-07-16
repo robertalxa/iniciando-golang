@@ -54,17 +54,21 @@ func iniciarMonitoramento() {
 	sites := []string{"https://httpbin.org/status/200", "https://httpbin.org/status/404", "https://www.alura.com.br", "https://www.caelum.com.br"}
 
 	for _, site := range sites {
-		// site := sites[i]
-		fmt.Println(site)
-		response, _ := http.Get(site)
-
-		switch response.StatusCode {
-		case 200:
-			fmt.Println("Site: ", site, " foi carregado com sucesso")
-		default:
-			fmt.Println("Site: ", site, " está com problema, status code: ", response.StatusCode)
-		}
+		testaSite(site)
 	}
+}
+
+func testaSite(site string) {
+	fmt.Println("Testando site: '", site, "'")
+	response, _ := http.Get(site)
+
+	switch response.StatusCode {
+	case 200:
+		fmt.Println("Site: ", site, " foi carregado com sucesso")
+	default:
+		fmt.Println("Site: ", site, " está com problema, status code: ", response.StatusCode)
+	}
+	fmt.Println("")
 }
 
 func devolveNomeEIdade() (string, int) {
