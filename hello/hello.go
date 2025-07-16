@@ -50,6 +50,13 @@ func iniciarMonitoramento() {
 	fmt.Println("Monitorando")
 	// site := "https://httpbin.org/status/200" // Para requisição com sucesso
 	site := "https://httpbin.org/status/404" // Para requisição sem sucesso
+	var sites [4]string
+	sites[0] = "https://httpbin.org/status/404"
+	sites[1] = "https://www.alura.com.br"
+	sites[2] = "https://www.caelum.com.br"
+
+	fmt.Println(sites)
+
 	response, _ := http.Get(site)
 
 	switch response.StatusCode {
