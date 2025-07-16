@@ -9,7 +9,7 @@ import (
 func main() {
 	// _, idade := devolveNomeEIdade() Esse underline faz o go ignorar o primeiro retorno
 	// fmt.Println("tenho ", idade, " anos")
-	// exibeNomes()
+	exibeNomes()
 
 	exibeIntroducao()
 	for {
@@ -78,6 +78,8 @@ func exibeNomes() {
 	nomes := []string{"Robert", "Alexandre", "Almeida"}
 	fmt.Println(nomes)
 	fmt.Println("O meu slice tem", len(nomes))
+	nomes = append(nomes, "Nome extra")
+	fmt.Println("O meu slice agora tem", len(nomes), "nomes e capacidade para ", cap(nomes), "nomes")
 }
 
 // Para buildar o executável é só rodar go build *nome do arquivo.go*
