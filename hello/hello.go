@@ -55,7 +55,8 @@ func iniciarMonitoramento() {
 	fmt.Println("Monitorando")
 	// site := "https://httpbin.org/status/200" // Para requisição com sucesso
 	// site := "https://httpbin.org/status/404" // Para requisição sem sucesso
-	sites := []string{"https://httpbin.org/status/200", "https://httpbin.org/status/404", "https://www.alura.com.br", "https://www.caelum.com.br"}
+	// sites := []string{"https://httpbin.org/status/200", "https://httpbin.org/status/404", "https://www.alura.com.br", "https://www.caelum.com.br"}
+	sites := leSisteDoArquivo()
 
 	for i := 0; i < MONITORAMENTOS; i++ {
 		for _, site := range sites {
@@ -64,6 +65,13 @@ func iniciarMonitoramento() {
 		fmt.Println("")
 		time.Sleep(INTERVALO_MONITORAMENTO)
 	}
+}
+
+func leSisteDoArquivo() []string {
+	var sites []string
+	arquivo, _ := os.Open("sites.txt")
+	fmt.Println(arquivo)
+	return sites
 }
 
 func testaSite(site string) {
