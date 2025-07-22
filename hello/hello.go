@@ -90,6 +90,8 @@ func leSisteDoArquivo() []string {
 		sites = append(sites, linha)
 	}
 
+	arquivo.Close()
+
 	return sites
 }
 
