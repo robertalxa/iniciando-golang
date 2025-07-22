@@ -69,14 +69,23 @@ func iniciarMonitoramento() {
 
 func leSisteDoArquivo() []string {
 	var sites []string
-	arquivo, _ := os.Open("sites.txt")
+	arquivo, err := os.Open("sites.txt")
+
+	if err != nil {
+		fmt.Println("Ocorreu um erro:", err)
+	}
+
 	fmt.Println(arquivo)
 	return sites
 }
 
 func testaSite(site string) {
 	fmt.Println("Testando site: '", site, "'")
-	response, _ := http.Get(site)
+	response, err := http.Get(site)
+
+	if err != nil {
+		fmt.Println("Ocorreu um erro na requisição:", err)
+	}
 
 	switch response.StatusCode {
 	case 200:
