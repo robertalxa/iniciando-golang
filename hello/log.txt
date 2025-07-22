@@ -1,0 +1,9 @@
+22/07/2025 20:41:48 - https://httpbin.org/status/200 - online: 	true
+22/07/2025 20:41:49 - https://httpbin.org/status/404 - online: 	false
+22/07/2025 20:41:50 - https://www.alura.com.br - online: 	true
+22/07/2025 20:41:55 - https://httpbin.org/status/200 - online: 	true
+22/07/2025 20:41:55 - https://httpbin.org/status/404 - online: 	false
+22/07/2025 20:41:56 - https://www.alura.com.br - online: 	true
+22/07/2025 20:42:01 - https://httpbin.org/status/200 - online: 	true
+22/07/2025 20:42:02 - https://httpbin.org/status/404 - online: 	false
+22/07/2025 20:42:02 - https://www.alura.com.br - online: 	true

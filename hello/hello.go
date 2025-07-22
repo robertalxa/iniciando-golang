@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 	"strings"
 	"time"
 )
@@ -17,8 +18,6 @@ func main() {
 	// _, idade := devolveNomeEIdade() Esse underline faz o go ignorar o primeiro retorno
 	// fmt.Println("tenho ", idade, " anos")
 	// exibeNomes()
-
-	registraLog("site false", false)
 
 	exibeIntroducao()
 	for {
@@ -118,13 +117,15 @@ func testaSite(site string) {
 
 func registraLog(site string, status bool) {
 	const permissao = 0666
-	arquivo, err := os.OpenFile("log.txt", os.O_RDWR|os.O_CREATE, permissao)
+	arquivo, err := os.OpenFile("log.txt", os.O_RDWR|os.O_CREATE|os.O_APPEND, permissao)
 
 	if err != nil {
 		fmt.Println(err)
 	}
 
-	fmt.Println(arquivo)
+	arquivo.WriteString(time.Now().Format("02/01/2006 15:04:05") + " - " + site + " - online: " + strconv.FormatBool(status) + "\n")
+
+	arquivo.Close()
 }
 
 func devolveNomeEIdade() (string, int) {
