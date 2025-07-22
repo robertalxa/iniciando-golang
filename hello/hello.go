@@ -18,6 +18,8 @@ func main() {
 	// fmt.Println("tenho ", idade, " anos")
 	// exibeNomes()
 
+	registraLog("site false", false)
+
 	exibeIntroducao()
 	for {
 		exibeMenu()
@@ -106,10 +108,23 @@ func testaSite(site string) {
 	switch response.StatusCode {
 	case 200:
 		fmt.Println("Site: ", site, " foi carregado com sucesso")
+		registraLog(site, true)
 	default:
 		fmt.Println("Site: ", site, " está com problema, status code: ", response.StatusCode)
+		registraLog(site, false)
 	}
 	// fmt.Println("")
+}
+
+func registraLog(site string, status bool) {
+	const permissao = 0666
+	arquivo, err := os.OpenFile("log.txt", os.O_RDWR|os.O_CREATE, permissao)
+
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println(arquivo)
 }
 
 func devolveNomeEIdade() (string, int) {
