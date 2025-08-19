@@ -29,7 +29,7 @@ func (c *ContaCorrente) depositar(valorDeposito float64) (string, float64) {
 }
 
 func (c *ContaCorrente) Transferir(valorTransferencia float64, contaDestino *ContaCorrente) bool {
-	if valorTransferencia > c.saldo {
+	if valorTransferencia > 0 && valorTransferencia > c.saldo {
 		return false
 	}
 
@@ -61,7 +61,7 @@ func main() {
 	}
 
 	fmt.Println(contaAriana)
-	statusTransferencia := conta.Transferir(400, &contaAriana)
+	statusTransferencia := conta.Transferir(1100, &contaAriana)
 	if statusTransferencia {
 		fmt.Println("Transferencia realizada com sucesso")
 	} else {
