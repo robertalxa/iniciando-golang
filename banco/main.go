@@ -19,6 +19,15 @@ func (c *ContaCorrente) sacar(valorSaque float64) string {
 	return "Saldo insuficiente!"
 }
 
+func (c *ContaCorrente) depositar(valorDeposito float64) (string, float64) {
+	if valorDeposito < 0 {
+		return "Valor de depósito inválido", c.saldo
+	}
+
+	c.saldo += valorDeposito
+	return "Depósito realizado com sucesso", c.saldo
+}
+
 func main() {
 	conta := ContaCorrente{
 		titular:       "Robert",
@@ -28,6 +37,9 @@ func main() {
 	}
 
 	fmt.Println(conta)
-	fmt.Println(conta.sacar(-900))
+	fmt.Println(conta.sacar(90))
+	fmt.Println(conta)
+	status, novoSaldo := conta.depositar(900)
+	fmt.Println(status, novoSaldo)
 	fmt.Println(conta)
 }
