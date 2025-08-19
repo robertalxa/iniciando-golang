@@ -25,5 +25,5 @@ func main() {
 	contaBieber = new(ContaCorrente)
 	contaBieber.titular = "Bieber"
 	contaBieber.saldo = 5000000000
-	fmt.Println(contaBieber)
+	fmt.Println(*contaBieber)
 }
