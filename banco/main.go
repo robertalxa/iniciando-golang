@@ -28,9 +28,19 @@ func (c *ContaCorrente) depositar(valorDeposito float64) (string, float64) {
 	return "Depósito realizado com sucesso", c.saldo
 }
 
+func (c *ContaCorrente) Transferir(valorTransferencia float64, contaDestino ContaCorrente) bool {
+	if valorTransferencia > c.saldo {
+		return false
+	}
+
+	c.sacar(valorTransferencia)
+	contaDestino.depositar(valorTransferencia)
+	return true
+}
+
 func main() {
 	conta := ContaCorrente{
-		titular:       "Robert",
+		titular:       "Bieber",
 		numeroAgencia: 0001,
 		numeroConta:   2000,
 		saldo:         100,
@@ -42,4 +52,22 @@ func main() {
 	status, novoSaldo := conta.depositar(900)
 	fmt.Println(status, novoSaldo)
 	fmt.Println(conta)
+
+	contaAriana := ContaCorrente{
+		titular:       "Ariana Grande",
+		numeroAgencia: 0001,
+		numeroConta:   1000,
+		saldo:         500,
+	}
+
+	fmt.Println(contaAriana)
+	statusTransferencia := conta.Transferir(400, contaAriana)
+	if statusTransferencia {
+		fmt.Println("Transferencia realizada com sucesso")
+	} else {
+		fmt.Println("Transferencia não foi realizada")
+	}
+	fmt.Println(conta)
+	fmt.Println(contaAriana)
+
 }
