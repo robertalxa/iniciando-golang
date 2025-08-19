@@ -19,4 +19,11 @@ func main() {
 	conta2 := ContaCorrente{"Ariana Grande", 222, 333, 100}
 	fmt.Println(conta1)
 	fmt.Println(conta2)
+
+	var contaBieber *ContaCorrente
+
+	contaBieber = new(ContaCorrente)
+	contaBieber.titular = "Bieber"
+	contaBieber.saldo = 5000000000
+	fmt.Println(contaBieber)
 }
