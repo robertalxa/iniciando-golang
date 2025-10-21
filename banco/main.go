@@ -45,4 +45,12 @@ func main() {
 	}
 
 	fmt.Println("Saldo da conta 2 =>", contaAriana.ObterSaldo())
+
+	// ------------
+
+	contaPoupa := contas.ContaPoupanca{}
+	contaCorr := contas.ContaCorrente{}
+
+	fmt.Println(contaPoupa)
+	fmt.Println(contaCorr)
 }
