@@ -1,13 +1,20 @@
 package main
 
 import (
+	"banco/clientes"
 	"banco/contas"
 	"fmt"
 )
 
 func main() {
+	titular := clientes.Titular{
+		Nome:      "Bieber",
+		CPF:       "123",
+		Profissao: "Singer",
+	}
+
 	conta := contas.ContaCorrente{
-		Titular:       "Bieber",
+		Titular:       titular,
 		NumeroAgencia: 0001,
 		NumeroConta:   2000,
 		Saldo:         100,
@@ -20,8 +27,14 @@ func main() {
 	fmt.Println(status, novoSaldo)
 	fmt.Println(conta)
 
+	titular2 := clientes.Titular{
+		Nome:      "Ariana Grande",
+		CPF:       "321",
+		Profissao: "Singer",
+	}
+
 	contaAriana := contas.ContaCorrente{
-		Titular:       "Ariana Grande",
+		Titular:       titular2,
 		NumeroAgencia: 0001,
 		NumeroConta:   1000,
 		Saldo:         500,
