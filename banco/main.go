@@ -6,6 +6,14 @@ import (
 	"fmt"
 )
 
+type verificarConta interface {
+	Sacar(valor float64) string
+}
+
+func PagarBoleto(conta verificarConta, valorDoBoleto float64) {
+	conta.Sacar(valorDoBoleto)
+}
+
 func main() {
 	titular := clientes.Titular{
 		Nome:      "Bieber",
@@ -51,6 +59,12 @@ func main() {
 	contaPoupa := contas.ContaPoupanca{}
 	contaCorr := contas.ContaCorrente{}
 
-	fmt.Println(contaPoupa)
-	fmt.Println(contaCorr)
+	contaPoupa.Depositar(1000)
+	contaCorr.Depositar(1000)
+
+	PagarBoleto(&contaPoupa, 80) // Aqui o & passa o endereço de memória
+	PagarBoleto(&contaCorr, 180) // Aqui o & passa o endereço de memória
+
+	fmt.Println(contaPoupa.ObterSaldo())
+	fmt.Println(contaCorr.ObterSaldo())
 }
