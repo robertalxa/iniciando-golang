@@ -17,15 +17,11 @@ func main() {
 		Titular:       titular,
 		NumeroAgencia: 0001,
 		NumeroConta:   2000,
-		Saldo:         100,
 	}
 
-	fmt.Println(conta)
-	fmt.Println(conta.Sacar(90))
-	fmt.Println(conta)
-	status, novoSaldo := conta.Depositar(900)
-	fmt.Println(status, novoSaldo)
-	fmt.Println(conta)
+	conta.Depositar(100)
+	conta.Sacar(90)
+	conta.Depositar(900)
 
 	titular2 := clientes.Titular{
 		Nome:      "Ariana Grande",
@@ -37,17 +33,16 @@ func main() {
 		Titular:       titular2,
 		NumeroAgencia: 0001,
 		NumeroConta:   1000,
-		Saldo:         500,
 	}
 
-	fmt.Println(contaAriana)
+	contaAriana.Depositar(500)
+
 	statusTransferencia := conta.Transferir(1100, &contaAriana)
 	if statusTransferencia {
 		fmt.Println("Transferencia realizada com sucesso")
 	} else {
 		fmt.Println("Transferencia não foi realizada")
 	}
-	fmt.Println(conta)
-	fmt.Println(contaAriana)
 
+	fmt.Println("Saldo da conta 2 =>", contaAriana.ObterSaldo())
 }
